@@ -1,0 +1,42 @@
+---
+# tasks file for android_studio
+- name: Install Block
+  block:
+    - name: Install required libraries for 64-bit machines
+      ansible.builtin.package:
+        name:
+          - libc6:i386
+          - libncurses5:i386
+          - libstdc++6:i386
+          - lib32z1
+          - libbz2-1.0:i386
+        state: present
+      when: ansible_architecture == "x86_64"
+
+    - name: Create Android-Studio download dir on remote host if it does not exist
+      ansible.builtin.file:
+        path: "{{ download_dir_on_remote_host }}/android_studio"
+        state: directory
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+
+    - name: Download installer
+      become: true
+      become_user: "{{ ansible_user }}"
+      ansible.builtin.get_url:
+        url: "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/{{ android_studio.version }}/android-studio-{{ android_studio.version }}-linux.tar.gz"
+        dest: "{{ download_dir_on_remote_host }}/android_studio/android-studio-{{ android_studio.version }}-linux.tar.gz"
+        checksum: "{{ android_studio.checksum }}"
+      register: android_studio_installer
+
+    - name: Clean destination folder if needed
+      ansible.builtin.file:
+        path: "/opt/android-studio"
+        state: absent
+      when: android_studio_installer.changed
+
+    - name: Execute installer
+      ansible.builtin.unarchive:
+        src: "{{ download_dir_on_remote_host }}/android_studio/android-studio-{{ android_studio.version }}-linux.tar.gz"
+        dest: "/opt/"
+      when: android_studio_installer.changed

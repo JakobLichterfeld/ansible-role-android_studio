@@ -1,0 +1,7 @@
+---
+# defaults file for android_studio
+download_dir_on_remote_host: "/home/{{ ansible_user }}/Downloads/automatically_by_ansible_playbook"
+
+android_studio:
+  version: "2022.3.1.19"
+  checksum: "sha256:250625dcab183e0c68ebf12ef8a522af7369527d76f1efc704f93c05b02ffa9e"
