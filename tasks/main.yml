@@ -39,4 +39,5 @@
       ansible.builtin.unarchive:
         src: "{{ download_dir_on_remote_host }}/android_studio/android-studio-{{ android_studio.version }}-linux.tar.gz"
         dest: "/opt/"
+        remote_src: true
       when: android_studio_installer.changed
