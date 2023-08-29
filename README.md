@@ -1,5 +1,8 @@
 # Ansible Role: Android Studio
 
+[![CI](https://github.com/JakobLichterfeld/ansible-role-android_studio/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/JakobLichterfeld/ansible-role-android_studio/actions/workflows/ci.yml)
+[![Release Role to Ansible Galaxy](https://github.com/JakobLichterfeld/ansible-role-android_studio/actions/workflows/release_to_ansible_galaxy.yml/badge.svg?branch=main)](https://github.com/JakobLichterfeld/ansible-role-android_studio/actions/workflows/release_to_ansible_galaxy.yml)
+
 Install Android Studio via download.
 
 - Install required libraries for 64-bit machines
@@ -29,7 +32,7 @@ None.
 ```yaml
 ---
 - hosts: all
-  gather_facts: yes
+  gather_facts: true
   become: true
 
   roles:

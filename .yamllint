@@ -1,0 +1,10 @@
+---
+extends: default
+
+rules:
+  line-length: disable
+  truthy:
+    allowed-values: ['true', 'false', 'yes', 'no']
+
+ignore: |
+  .github/workflows/*.yml
