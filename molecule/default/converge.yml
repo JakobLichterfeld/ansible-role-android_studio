@@ -9,16 +9,6 @@
       ansible.builtin.set_fact:
         ansible_user: "root"
 
-    - name: Update apt cache
-      ansible.builtin.apt:
-        update_cache: yes
-        cache_valid_time: 600
-      when: ansible_os_family == "Debian"
-
-    - name: Print Debug message
-      ansible.builtin.debug:
-        msg: "OS Family: {{ ansible_os_family }}"
-
   tasks:
     - name: Testing role
       ansible.builtin.include_role:
