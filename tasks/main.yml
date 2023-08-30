@@ -2,6 +2,21 @@
 # tasks file for android_studio
 - name: Install Block
   block:
+    - name: Check if i386 is enabled
+      #command because the ansible.builtin.dpkg_selections command does only support selection in Ansible.
+      ansible.builtin.command:
+        cmd: dpkg --print-foreign-architectures | grep i386
+      register: result_i386_check
+      changed_when: result_i386_check.rc == 1
+      failed_when: result_i386_check.rc < 1
+      when: ansible_architecture == "x86_64"
+
+    - name: Enable i386 architecture
+      #command because the ansible.builtin.dpkg_selections command does only support selection in Ansible.
+      ansible.builtin.command:
+        cmd: dpkg --add-architecture i386
+      when: result_i386_check.rc == 1
+
     - name: Install required libraries for 64-bit machines
       ansible.builtin.package:
         name:
@@ -27,6 +42,7 @@
         url: "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/{{ android_studio.version }}/android-studio-{{ android_studio.version }}-linux.tar.gz"
         dest: "{{ download_dir_on_remote_host }}/android_studio/android-studio-{{ android_studio.version }}-linux.tar.gz"
         checksum: "{{ android_studio.checksum }}"
+        timeout: 60
       register: android_studio_installer
 
     - name: Clean destination folder if needed
