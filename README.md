@@ -1,7 +1,7 @@
 # Ansible Role: Android Studio
 
 [![CI](https://github.com/JakobLichterfeld/ansible-role-android_studio/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/JakobLichterfeld/ansible-role-android_studio/actions/workflows/ci.yml)
-[![Release Role to Ansible Galaxy](https://github.com/JakobLichterfeld/ansible-role-android_studio/actions/workflows/release_to_ansible_galaxy.yml/badge.svg?branch=main)](https://github.com/JakobLichterfeld/ansible-role-android_studio/actions/workflows/release_to_ansible_galaxy.yml)
+[![Publish role on Ansible Galaxy](https://github.com/JakobLichterfeld/ansible-role-android_studio/actions/workflows/publish_role_on_ansible_galaxy.yml/badge.svg?branch=main)](https://github.com/JakobLichterfeld/ansible-role-android_studio/actions/workflows/publish_role_on_ansible_galaxy.yml)
 
 Install Android Studio via download.
 
