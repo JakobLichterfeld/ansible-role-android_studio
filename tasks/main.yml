@@ -17,6 +17,12 @@
         cmd: dpkg --add-architecture i386
       when: result_i386_check.rc == 1
 
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 600
+      when: result_i386_check.rc == 1 and ansible_os_family == "Debian"
+
     - name: Install required libraries for 64-bit machines
       ansible.builtin.package:
         name:

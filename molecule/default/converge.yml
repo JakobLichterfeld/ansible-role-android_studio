@@ -15,16 +15,6 @@
         cache_valid_time: 600
       when: ansible_os_family == "Debian"
 
-    - name: Debug docker register
-      become: true
-      ansible.builtin.command:
-        cmd: apt list libc6
-      register: output
-
-    - name: Debug docker
-      ansible.builtin.debug:
-        msg: $ {{ output  }}
-
   tasks:
     - name: Testing role
       ansible.builtin.include_role:
