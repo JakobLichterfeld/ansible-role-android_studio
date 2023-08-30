@@ -2,15 +2,15 @@
 galaxy_info:
     role_name: android_studio
     namespace: jakoblichterfeld
-    version: 1.0.0
+    standalone: true
     author: JakobLichterfeld
     description: Install Android Studio via download
 
-    homepage: https://github.com/JakobLichterfeld/ansible-role-android_studio
+    #homepage: https://github.com/JakobLichterfeld/ansible-role-android_studio
     issue_tracker_url: https://github.com/JakobLichterfeld/ansible-role-android_studio/issues
 
     license: MIT
-    min_ansible_version: 2.1
+    min_ansible_version: "2.1"
 
     platforms:
         - name: Ubuntu
@@ -18,9 +18,10 @@ galaxy_info:
               - jammy
 
     galaxy_tags:
-        - android-studio
-        - androidsdk
         - androidstudio
+        - androidsdk
+        - android
+        - studio
         - ide
         - google
 
