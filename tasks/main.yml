@@ -3,7 +3,7 @@
 - name: Install Block
   block:
     - name: Check if i386 is enabled
-      #command because the ansible.builtin.dpkg_selections command does only support selection in Ansible.
+      # command because the ansible.builtin.dpkg_selections command does only support selection in Ansible.
       ansible.builtin.command:
         cmd: dpkg --print-foreign-architectures | grep i386
       register: result_i386_check
@@ -12,7 +12,7 @@
       when: ansible_architecture == "x86_64"
 
     - name: Enable i386 architecture
-      #command because the ansible.builtin.dpkg_selections command does only support selection in Ansible.
+      # command because the ansible.builtin.dpkg_selections command does only support selection in Ansible.
       ansible.builtin.command:
         cmd: dpkg --add-architecture i386
       when: result_i386_check.rc == 1
