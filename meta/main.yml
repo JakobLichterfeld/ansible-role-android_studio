@@ -6,7 +6,7 @@ galaxy_info:
     author: JakobLichterfeld
     description: Install Android Studio via download
 
-    #homepage: https://github.com/JakobLichterfeld/ansible-role-android_studio
+    # homepage: https://github.com/JakobLichterfeld/ansible-role-android_studio
     issue_tracker_url: https://github.com/JakobLichterfeld/ansible-role-android_studio/issues
 
     license: MIT
